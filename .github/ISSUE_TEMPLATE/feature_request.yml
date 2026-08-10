@@ -1,0 +1,52 @@
+name: Feature request
+description: New functionality or a stage from the roadmap (see section 8 of the spec)
+title: "[Feature]: "
+labels: ["type: feature", "needs-triage"]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: What needs to be built?
+      description: Reference the relevant section of the spec if applicable (e.g. "5.6 Workflow").
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      placeholder: |
+        - [ ] ...
+        - [ ] ...
+    validations:
+      required: true
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - auth
+        - orgs-projects
+        - tasks
+        - workflow
+        - bug-reports
+        - releases
+        - webhooks
+        - analytics
+        - infra
+        - other
+    validations:
+      required: true
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      options:
+        - low
+        - medium
+        - high
+        - urgent
+    validations:
+      required: true
