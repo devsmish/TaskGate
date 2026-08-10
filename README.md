@@ -19,6 +19,7 @@ Task/Project Management API (mini-Trello/Jira) — a portfolio project built wit
 
    ```bash
    cp .env.example .env
+   # then edit .env with real values
    ```
 
 2. Start everything with Docker Compose:
@@ -77,6 +78,10 @@ Current progress is tracked via issues/project board on GitHub.
 
 See [CONTRIBUTING.md](./CONTRIBUTING.md) for the branching workflow (feature branches
 per issue, PRs into `develop`, release branches into `main`).
+
+## Changelog
+
+See [CHANGELOG.md](./CHANGELOG.md).
 
 ## License
 
