@@ -9,6 +9,33 @@ Task/Project Management API (mini-Trello/Jira) — a portfolio project built wit
 - Redis + ARQ (background jobs, webhooks)
 - uv — dependency manager
 
+## Local setup
+
+1. Copy `.env.example` to `.env` and **fill in real values** — `POSTGRES_USER`,
+   `POSTGRES_PASSWORD`, `DATABASE_URL`, `JWT_SECRET_KEY`, etc. `.env` is
+   gitignored and must never be committed. `docker-compose.yml` has no
+   credentials of its own — it only reads `${POSTGRES_USER}` and similar
+   from `.env`, so it will refuse to start without one:
+
+   ```bash
+   cp .env.example .env
+   ```
+
+2. Start everything with Docker Compose:
+
+   ```bash
+   docker compose up --build
+   ```
+
+3. The API will be available at `http://localhost:8000`, docs at `http://localhost:8000/docs`.
+
+## Development without Docker
+
+```bash
+uv sync
+uv run uvicorn app.main:app --reload
+```
+
 ## Tests
 
 ```bash
