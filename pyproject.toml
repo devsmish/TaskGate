@@ -1,0 +1,41 @@
+[project]
+name = "taskgate"
+version = "0.1.0"
+description = "TaskGate — Task/Project Management API (mini-Trello/Jira) — FastAPI + PostgreSQL portfolio project"
+readme = "README.md"
+license = "LicenseRef-All-Rights-Reserved"
+requires-python = ">=3.12"
+dependencies = [
+    "alembic>=1.19.0",
+    "arq>=0.28.0",
+    "asyncpg>=0.31.0",
+    "fastapi>=0.141.1",
+    "passlib[bcrypt]>=1.7.4",
+    "pydantic-settings>=2.15.0",
+    "python-jose[cryptography]>=3.5.0",
+    "python-multipart>=0.0.32",
+    "redis>=5.3.1",
+    "sqlalchemy[asyncio]>=2.0.51",
+    "structlog>=26.1.0",
+    "uvicorn[standard]>=0.52.1",
+]
+
+[dependency-groups]
+dev = [
+    "httpx>=0.28.1",
+    "pytest>=9.1.1",
+    "pytest-asyncio>=1.4.0",
+    "pytest-cov>=7.1.0",
+    "ruff>=0.16.2",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["app/tests"]
