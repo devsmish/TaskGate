@@ -9,6 +9,33 @@ Task/Project Management API (mini-Trello/Jira) — a portfolio project built wit
 - Redis + ARQ (background jobs, webhooks)
 - uv — dependency manager
 
+## Tests
+
+```bash
+uv run pytest
+```
+
+## Linting
+
+```bash
+uv run ruff check .
+```
+
+## Project structure
+
+```
+app/
+ ├── api/v1/        # routers
+ ├── services/       # business logic
+ ├── repositories/    # data access
+ ├── models/           # SQLAlchemy models
+ ├── schemas/           # Pydantic schemas
+ ├── core/               # config, security, permissions
+ ├── workers/             # ARQ tasks (webhooks, cron jobs)
+ ├── db/                   # session, base model, migrations
+ └── tests/
+```
+
 ## Development status
 
 The project is built in stages — see section 8 of the specification for the roadmap.
