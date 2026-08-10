@@ -1,0 +1,31 @@
+name: Deploy to Production
+
+# It triggers not on a push to `main`, but specifically on the publication of a GitHub Release.
+on:
+  release:
+    types: [published]
+
+concurrency:
+  group: deploy-production
+  cancel-in-progress: false
+
+jobs:
+  build:
+    uses: ./.github/workflows/build-image.yml
+    secrets: inherit
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - name: Deploy image to production
+        run: |
+          echo "Assembled image: ${{ needs.build.outputs.image }}"
+          echo "Release version: ${{ github.event.release.tag_name }}"
+          echo "TODO: replace with the actual deployment step after selecting the infrastructure"
+
+      - name: Smoke test
+        run: |
+          echo "TODO: replace with a real health-check production"
+          # curl -f https://taskgate.example.com/api/v1/health

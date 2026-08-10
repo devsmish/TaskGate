@@ -19,6 +19,7 @@ Task/Project Management API (mini-Trello/Jira) — a portfolio project built wit
 
    ```bash
    cp .env.example .env
+   # then edit .env with real values
    ```
 
 2. Start everything with Docker Compose:
@@ -26,6 +27,11 @@ Task/Project Management API (mini-Trello/Jira) — a portfolio project built wit
    ```bash
    docker compose up --build
    ```
+
+   > On Windows, the Postgres data directory is bind-mounted to `D:\DB\TaskGate_db`
+   > on the host (see `docker-compose.yml`). Make sure the `D:` drive is shared
+   > with Docker Desktop (Settings → Resources → File sharing) if you're on the
+   > Hyper-V backend; with the WSL2 backend this works out of the box.
 
 3. The API will be available at `http://localhost:8000`, docs at `http://localhost:8000/docs`.
 
@@ -67,6 +73,15 @@ app/
 
 The project is built in stages — see section 8 of the specification for the roadmap.
 Current progress is tracked via issues/project board on GitHub.
+
+## Contributing
+
+See [CONTRIBUTING.md](./CONTRIBUTING.md) for the branching workflow (feature branches
+per issue, PRs into `develop`, release branches into `main`).
+
+## Changelog
+
+See [CHANGELOG.md](./CHANGELOG.md).
 
 ## License
 
