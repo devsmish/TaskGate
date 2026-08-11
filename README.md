@@ -1,5 +1,8 @@
 # TaskGate
 
+[![CI](https://github.com/devsmish/TaskGate/actions/workflows/ci.yml/badge.svg)](https://github.com/devsmish/TaskGate/actions/workflows/ci.yml)
+[![License: All Rights Reserved](https://img.shields.io/badge/license-All%20Rights%20Reserved-lightgrey)](./LICENSE)
+
 Task/Project Management API (mini-Trello/Jira) — a portfolio project built with FastAPI + PostgreSQL.
 
 ## Tech stack
@@ -8,6 +11,33 @@ Task/Project Management API (mini-Trello/Jira) — a portfolio project built wit
 - PostgreSQL 16, SQLAlchemy 2.0 (async), Alembic
 - Redis + ARQ (background jobs, webhooks)
 - uv — dependency manager
+
+## Local setup
+
+1. Copy `.env.example` to `.env` and **fill in real values** — `POSTGRES_USER`,
+   `POSTGRES_PASSWORD`, `DATABASE_URL`, `JWT_SECRET_KEY`, etc. `.env` is
+   gitignored and must never be committed. `docker-compose.yml` has no
+   credentials of its own — it only reads `${POSTGRES_USER}` and similar
+   from `.env`, so it will refuse to start without one:
+
+   ```bash
+   cp .env.example .env
+   ```
+
+2. Start everything with Docker Compose:
+
+   ```bash
+   docker compose up --build
+   ```
+
+3. The API will be available at `http://localhost:8000`, docs at `http://localhost:8000/docs`.
+
+## Development without Docker
+
+```bash
+uv sync
+uv run uvicorn app.main:app --reload
+```
 
 ## Tests
 
@@ -40,6 +70,15 @@ app/
 
 The project is built in stages — see section 8 of the specification for the roadmap.
 Current progress is tracked via issues/project board on GitHub.
+
+## Contributing
+
+See [CONTRIBUTING.md](./CONTRIBUTING.md) for the branching workflow (feature branches
+per issue, PRs into `develop`, release branches into `main`).
+
+## Changelog
+
+See [CHANGELOG.md](./CHANGELOG.md).
 
 ## License
 

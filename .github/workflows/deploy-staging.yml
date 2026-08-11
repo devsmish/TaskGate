@@ -1,0 +1,32 @@
+name: Deploy to Staging
+
+on:
+  push:
+    branches: [develop]
+
+# If multiple pushes to `develop` occur in quick succession, the previous one is cancelled.
+concurrency:
+  group: deploy-staging
+  cancel-in-progress: true
+
+jobs:
+  build:
+    uses: ./.github/workflows/build-image.yml
+    secrets: inherit
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment: staging
+    steps:
+      - name: Deploy image to staging
+        run: |
+          echo "Assembled image: ${{ needs.build.outputs.image }}"
+          echo "TODO: replace with the actual deployment step after selecting the infrastructure:"
+          echo "  - VPS по SSH: ssh deploy@staging-host 'docker pull ... && docker compose up -d'"
+          echo "  - Railway/Render/Fly.io: corresponding CLI/deploy action"
+
+      - name: Smoke test
+        run: |
+          echo "TODO: replace with a real health-check already deployed staging"
+          # curl -f https://staging.taskgate.example.com/api/v1/health

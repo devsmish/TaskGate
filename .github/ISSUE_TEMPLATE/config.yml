@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Question / discussion
+    url: https://github.com/devsmish/TaskGate/discussions
+    about: For general questions that aren't a bug or a concrete feature request
