@@ -1,5 +1,8 @@
 # TaskGate
 
+[![CI](https://github.com/devsmish/TaskGate/actions/workflows/ci.yml/badge.svg)](https://github.com/devsmish/TaskGate/actions/workflows/ci.yml)
+[![License: All Rights Reserved](https://img.shields.io/badge/license-All%20Rights%20Reserved-lightgrey)](./LICENSE)
+
 Task/Project Management API (mini-Trello/Jira) — a portfolio project built with FastAPI + PostgreSQL.
 
 ## Tech stack
@@ -19,7 +22,6 @@ Task/Project Management API (mini-Trello/Jira) — a portfolio project built wit
 
    ```bash
    cp .env.example .env
-   # then edit .env with real values
    ```
 
 2. Start everything with Docker Compose:
@@ -27,11 +29,6 @@ Task/Project Management API (mini-Trello/Jira) — a portfolio project built wit
    ```bash
    docker compose up --build
    ```
-
-   > On Windows, the Postgres data directory is bind-mounted to `D:\DB\TaskGate_db`
-   > on the host (see `docker-compose.yml`). Make sure the `D:` drive is shared
-   > with Docker Desktop (Settings → Resources → File sharing) if you're on the
-   > Hyper-V backend; with the WSL2 backend this works out of the box.
 
 3. The API will be available at `http://localhost:8000`, docs at `http://localhost:8000/docs`.
 
