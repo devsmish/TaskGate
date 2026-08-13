@@ -6,7 +6,7 @@ from app.repositories.user_repository import UserRepository
 
 
 class EmailAlreadyRegisteredError(Exception):
-    """Поднимается, когда email уже занят другим пользователем."""
+    """Raised when the email is already taken by another user."""
 
 
 class AuthService:
