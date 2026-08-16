@@ -15,6 +15,11 @@ services:
         condition: service_started
     volumes:
       - .:/app
+      # An anonymous volume "protects" the .venv inside the container from being
+      # overwritten by the host bind-mount specified above—otherwise, the Linux venv
+      # built during image creation gets overridden every time by the local
+      # Windows/macOS venv.
+      - /app/.venv
 
   worker:
     build: .
@@ -31,6 +36,7 @@ services:
         condition: service_started
     volumes:
       - .:/app
+      - /app/.venv
 
   db:
     image: postgres:16
@@ -43,7 +49,7 @@ services:
     volumes:
       - D:/DB/TaskGate_db:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER}"]
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
       interval: 5s
       timeout: 5s
       retries: 5

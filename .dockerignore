@@ -1,0 +1,30 @@
+# Environment
+.venv
+
+# Python-thrash
+__pycache__
+*.pyc
+*.pyo
+*.egg-info
+
+# Git
+.git
+.gitignore
+.gitattributes
+
+# Secrets
+.env
+
+# IDE
+.idea
+.vscode
+
+# Tests/cashes
+.pytest_cache
+.ruff_cache
+.coverage
+htmlcov
+
+# Docker
+Dockerfile
+docker-compose.yml
