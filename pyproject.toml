@@ -10,6 +10,7 @@ dependencies = [
     "arq>=0.28.0",
     "asyncpg>=0.31.0",
     "bcrypt>=5.0.0",
+    "email-validator>=2.3.0",
     "fastapi>=0.141.1",
     "pydantic-settings>=2.15.0",
     "pyjwt>=2.13.0",
@@ -19,7 +20,7 @@ dependencies = [
     "structlog>=26.1.0",
     "uvicorn[standard]>=0.52.1",
 ]
-
+ 
 [dependency-groups]
 dev = [
     "httpx>=0.28.1",
@@ -28,14 +29,20 @@ dev = [
     "pytest-cov>=7.1.0",
     "ruff>=0.16.2",
 ]
-
+ 
 [tool.ruff]
 line-length = 100
 target-version = "py312"
-
+exclude = ["app/db/migrations/versions"]
+ 
 [tool.ruff.lint]
 select = ["E", "F", "I", "UP", "B", "SIM"]
-
+ 
+[tool.ruff.lint.flake8-bugbear]
+# FastAPI's DI pattern intentionally calls Depends()/Query()/etc. as a default
+# argument value — this is not the "mutable default" bug B008 warns about.
+extend-immutable-calls = ["fastapi.Depends", "fastapi.Query", "fastapi.Body"]
+ 
 [tool.pytest.ini_options]
 asyncio_mode = "auto"
 testpaths = ["app/tests"]
