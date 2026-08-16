@@ -8,11 +8,14 @@ async def test_register_user_success() -> None:
     service = AuthService(FakeUserRepository())
 
     user = await service.register_user(
-        email="alice@example.com", password="supersecret", first_name="Alice", last_name="Smith"
+        email="alice@example.com",
+        password="supersecret",
+        first_name="Alice",
+        last_name="Smith",
     )
 
     assert user.email == "alice@example.com"
-    assert user.full_name == "Alice"
+    assert user.full_name == "Alice Smith"
     assert user.hashed_password != "supersecret"
 
 
